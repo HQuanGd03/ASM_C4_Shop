@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ASM_C4_Shop.Models.Size>
+
+@{
+    ViewData["Title"] = "ShowAllSize";
+}
+
+<h1>ShowAllSize</h1>
+
+<p>
+    <a asp-action="CreateSize">Thêm Mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kichthuoc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kichthuoc)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "EditSize", new { id = item.Id}) |
+                @Html.ActionLink("Chi Tiết", "DetailSize", new { id = item.Id }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

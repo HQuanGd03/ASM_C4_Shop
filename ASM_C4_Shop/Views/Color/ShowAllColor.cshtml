@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ASM_C4_Shop.Models.Color>
+
+@{
+    ViewData["Title"] = "ShowAllColor";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>ShowAllColor</h1>
+
+<p>
+    <a asp-action="CreateColor">Thêm Mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+        <div><a asp-action="Index">Back to List</a></div>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "EditColor", new { id = item.Id }) |
+                    @Html.ActionLink("Chi Tiết", "DetailColor", new { id = item.Id}) |
+                    @Html.ActionLink("Xóa", "DeleteColor", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
